@@ -9,7 +9,9 @@
     <script>
 		const pathJarMinecraft = '/example.jar';
 		const pathJarLibs = `/lwjgl/lwjgl-2.9.3.jar:/lwjgl/lwjgl_util-2.9.3.jar:${pathJarMinecraft}`;
-		await cheerpjInit({
+
+		async function start() {
+			await cheerpjInit({
 			version: 8,
 			javaProperties: ['java.library.path=/app/lwjgl/libraries/'],
 			libraries: { 'libGL.so.1': '/app/lwjgl/libraries/gl4es.wasm' },
@@ -64,8 +66,9 @@
 		hideElement(loading);
 		showElement(intro);
 		await cheerpjRunMain('net.minecraft.client.main', pathJarLibs);
-        
-      })();
+		}
+
+		start();
     </script>
   </body>
 </html>
